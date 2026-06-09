@@ -1,343 +1,295 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pitch Marketing — Transforma Tu Negocio</title>
-  <meta name="description" content="Agencia de marketing digital que impulsa tu marca con estrategias creativas y resultados medibles." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #6C3BFF;
-      --primary-light: #8B5FFF;
-      --accent: #FF3B7A;
-      --dark: #0D0D1A;
-      --dark2: #151528;
-      --card-bg: #1A1A35;
-      --text: #E8E8F0;
-      --muted: #9090B0;
-      --white: #ffffff;
-      --gradient: linear-gradient(135deg, #6C3BFF 0%, #FF3B7A 100%);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 5%;
-      background: rgba(13,13,26,.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(108,59,255,.2);
-    }
-    .logo {
-      font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px;
-      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      background: var(--gradient); color: var(--white); border: none; cursor: pointer;
-      padding: .65rem 1.6rem; border-radius: 50px; font-weight: 700; font-size: .9rem;
-      transition: opacity .2s, transform .2s;
-    }
-    .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
-
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      padding: 8rem 5% 5rem;
-      position: relative; overflow: hidden;
-    }
-    .hero-blob {
-      position: absolute; border-radius: 50%; filter: blur(100px); opacity: .35; pointer-events: none;
-    }
-    .blob1 { width: 600px; height: 600px; background: var(--primary); top: -200px; left: -150px; }
-    .blob2 { width: 500px; height: 500px; background: var(--accent); bottom: -150px; right: -100px; }
-
-    .hero-badge {
-      display: inline-block; background: rgba(108,59,255,.2); border: 1px solid rgba(108,59,255,.5);
-      color: var(--primary-light); padding: .4rem 1.1rem; border-radius: 50px;
-      font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
-      margin-bottom: 1.8rem;
-    }
-    h1 {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
-      margin-bottom: 1.5rem;
-    }
-    h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--muted); max-width: 640px;
-      margin: 0 auto 2.5rem; line-height: 1.7;
-    }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--gradient); color: var(--white); border: none; cursor: pointer;
-      padding: 1rem 2.4rem; border-radius: 50px; font-weight: 700; font-size: 1rem;
-      transition: opacity .2s, transform .2s; text-decoration: none; display: inline-block;
-    }
-    .btn-primary:hover { opacity: .85; transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,.25); cursor: pointer;
-      padding: 1rem 2.4rem; border-radius: 50px; font-weight: 600; font-size: 1rem;
-      transition: border-color .2s, transform .2s; text-decoration: none; display: inline-block;
-    }
-    .btn-outline:hover { border-color: var(--primary-light); transform: translateY(-2px); }
-
-    .hero-stats {
-      display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
-      margin-top: 4rem;
-    }
-    .stat { text-align: center; }
-    .stat-num { font-size: 2.2rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .stat-label { font-size: .85rem; color: var(--muted); margin-top: .25rem; }
-
-    section { padding: 6rem 5%; }
-    .section-tag {
-      display: inline-block; background: rgba(108,59,255,.15); border: 1px solid rgba(108,59,255,.4);
-      color: var(--primary-light); padding: .35rem .9rem; border-radius: 50px;
-      font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -1px;
-      margin-bottom: 1rem; line-height: 1.1;
-    }
-    .section-sub { color: var(--muted); max-width: 560px; line-height: 1.7; font-size: 1.05rem; }
-
-    #services { background: var(--dark2); }
-    .services-header { text-align: center; margin-bottom: 4rem; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; max-width: 1200px; margin: 0 auto;
-    }
-    .service-card {
-      background: var(--card-bg); border: 1px solid rgba(108,59,255,.15); border-radius: 20px;
-      padding: 2.2rem; transition: transform .25s, border-color .25s;
-    }
-    .service-card:hover { transform: translateY(-6px); border-color: rgba(108,59,255,.5); }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--gradient); display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.3rem;
-    }
-    .service-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .6rem; }
-    .service-card p { color: var(--muted); line-height: 1.65; font-size: .95rem; }
-
-    #process { text-align: center; }
-    .steps { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-top: 3.5rem; max-width: 1100px; margin-inline: auto; }
-    .step {
-      flex: 1; min-width: 220px; max-width: 260px;
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,.06); border-radius: 20px;
-      padding: 2.2rem 1.8rem; position: relative;
-    }
-    .step-num {
-      width: 44px; height: 44px; border-radius: 50%; background: var(--gradient);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 1rem; margin: 0 auto 1.2rem;
-    }
-    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
-    .step p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
-
-    #results { background: var(--dark2); }
-    .results-wrap { display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
-    .results-text { flex: 1; min-width: 280px; }
-    .results-metrics { flex: 1; min-width: 280px; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-    .metric-card {
-      background: var(--card-bg); border: 1px solid rgba(108,59,255,.2); border-radius: 18px;
-      padding: 1.8rem; text-align: center;
-    }
-    .metric-num { font-size: 2.5rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .metric-label { font-size: .85rem; color: var(--muted); margin-top: .3rem; }
-
-    #testimonials { text-align: center; }
-    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0; }
-    .testi-card {
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,.06); border-radius: 20px;
-      padding: 2rem; text-align: left;
-    }
-    .stars { color: #FFD700; font-size: 1.1rem; margin-bottom: 1rem; }
-    .testi-text { color: var(--text); line-height: 1.7; font-size: .95rem; margin-bottom: 1.3rem; font-style: italic; }
-    .testi-author { display: flex; align-items: center; gap: .9rem; }
-    .avatar {
-      width: 44px; height: 44px; border-radius: 50%; background: var(--gradient);
-      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;
-    }
-    .author-name { font-weight: 700; font-size: .95rem; }
-    .author-role { color: var(--muted); font-size: .8rem; }
-
-    #pricing { background: var(--dark2); text-align: center; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 3.5rem auto 0; }
-    .price-card {
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,.07); border-radius: 24px;
-      padding: 2.5rem 2rem; position: relative; transition: transform .25s;
-    }
-    .price-card:hover { transform: translateY(-6px); }
-    .price-card.popular { border-color: var(--primary); }
-    .popular-badge {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--gradient); color: var(--white); padding: .3rem 1.2rem;
-      border-radius: 50px; font-size: .78rem; font-weight: 700;
-    }
-    .price-plan { font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .8rem; }
-    .price-amount { font-size: 3rem; font-weight: 900; line-height: 1; }
-    .price-amount span { font-size: 1.2rem; color: var(--muted); }
-    .price-period { color: var(--muted); font-size: .85rem; margin-bottom: 1.8rem; }
-    .price-features { list-style: none; text-align: left; margin-bottom: 2rem; }
-    .price-features li { padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .9rem; color: var(--muted); display: flex; gap: .6rem; align-items: center; }
-    .price-features li::before { content: "\2713"; color: var(--primary-light); font-weight: 700; }
-
-    #cta {
-      text-align: center; padding: 7rem 5%;
-      background: radial-gradient(ellipse at center, rgba(108,59,255,.25) 0%, transparent 70%);
-    }
-    #cta h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 1.2rem; }
-    #cta p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
-
-    footer {
-      background: var(--dark2); border-top: 1px solid rgba(255,255,255,.06);
-      padding: 3rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-logo { font-size: 1.3rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-copy { color: var(--muted); font-size: .82rem; }
-
-    @media (max-width: 700px) {
-      .nav-links { display: none; }
-      .results-wrap { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pitch Marketing — Marketing directo en el sur de Chile</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="image-slot.js"></script>
 </head>
 <body>
 
-<nav>
-  <div class="logo">PitchMkt</div>
-  <ul class="nav-links">
-    <li><a href="#services">Servicios</a></li>
-    <li><a href="#process">Proceso</a></li>
-    <li><a href="#results">Resultados</a></li>
-    <li><a href="#pricing">Precios</a></li>
-  </ul>
-  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Empezar Ahora</button>
-</nav>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-<section id="hero">
-  <div class="hero-blob blob1"></div>
-  <div class="hero-blob blob2"></div>
-  <div style="position:relative;z-index:1;">
-    <div class="hero-badge">&#x1F680; Agencia de Marketing Digital #1</div>
-    <h1>Transforma Tu Marca en<br /><span>Una M&#225;quina de Ventas</span></h1>
-    <p class="hero-sub">Estrategias de marketing digital que generan resultados reales. M&#225;s clientes, m&#225;s ingresos, m&#225;s crecimiento para tu negocio.</p>
-    <div class="hero-btns">
-      <a href="#cta" class="btn-primary">Quiero M&#225;s Clientes &rarr;</a>
-      <a href="#process" class="btn-outline">Ver C&#243;mo Funciona</a>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="nav-logo" aria-label="Pitch Marketing">
+        <img src="assets/logo.png" alt="Pitch Marketing" />
+      </a>
+      <nav class="nav-links">
+        <a href="#que-hacemos">Qué hacemos</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#clientes">Aliados</a>
+        <a href="#equipo">Únete</a>
+        <a href="#ubicacion">Contacto</a>
+      </nav>
+      <div class="nav-cta-wrap">
+        <a href="#postular" class="btn btn-primary">Postula al equipo <span class="btn-arrow">→</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">+350%</div><div class="stat-label">ROI Promedio</div></div>
-      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clientes Satisfechos</div></div>
-      <div class="stat"><div class="stat-num">$12M+</div><div class="stat-label">Ingresos Generados</div></div>
-      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Tasa de Retenci&#243;n</div></div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#que-hacemos">Qué hacemos</a>
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#clientes">Aliados</a>
+    <a href="#equipo">Únete al equipo</a>
+    <a href="#ubicacion">Contacto</a>
+    <a href="#postular">Postula</a>
+  </div>
+
+  <span id="top"></span>
+
+  <section class="hero">
+    <img src="assets/logo.png" class="hero-monogram" data-parallax="0.22" alt="" aria-hidden="true" />
+    <div class="wrap hero-inner">
+      <div class="eyebrow reveal">Marketing directo · Sur de Chile</div>
+      <h1 class="reveal d1"><span class="h1-main">Conectamos personas con los </span><span class="accent h1-accent">mejores servicios del sur.</span></h1>
+      <p class="hero-sub reveal d2">Somos Pitch Marketing. Una empresa de marketing directo que conecta a proveedores líderes —salud, estética, veterinaria y automotriz— con miles de personas, a través de una cuponera premium distribuida en terreno por todo el sur.</p>
+      <div class="hero-actions reveal d3">
+        <a href="#postular" class="btn btn-primary">Quiero unirme al equipo <span class="btn-arrow">→</span></a>
+        <a href="#que-hacemos" class="btn btn-ghost">Conoce qué hacemos</a>
+      </div>
+      <div class="soundwave hero-wave reveal d4" data-bars="36" aria-hidden="true"></div>
     </div>
-  </div>
-</section>
-
-<section id="services">
-  <div class="services-header">
-    <div class="section-tag">Servicios</div>
-    <h2 class="section-title">Todo Lo Que Tu Negocio Necesita</h2>
-    <p class="section-sub" style="margin:0 auto;">Soluciones integrales de marketing digital dise&#241;adas para escalar tu negocio r&#225;pidamente.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card"><div class="service-icon">&#x1F4C8;</div><h3>Publicidad de Pago (PPC)</h3><p>Campa&#241;as en Google, Meta, TikTok e Instagram optimizadas para m&#225;ximo retorno de inversi&#243;n con presupuestos eficientes.</p></div>
-    <div class="service-card"><div class="service-icon">&#x1F50D;</div><h3>SEO &amp; Posicionamiento</h3><p>Estrategias de SEO t&#233;cnico y de contenido para que tu negocio aparezca primero cuando tus clientes te buscan.</p></div>
-    <div class="service-card"><div class="service-icon">&#x1F3A8;</div><h3>Branding &amp; Dise&#241;o</h3><p>Identidad de marca que conecta emocionalmente con tu audiencia y diferencia tu negocio de la competencia.</p></div>
-    <div class="service-card"><div class="service-icon">&#x2709;&#xFE0F;</div><h3>Email Marketing</h3><p>Secuencias autom&#225;ticas de email que nutren leads y convierten prospectos en clientes de forma consistente.</p></div>
-    <div class="service-card"><div class="service-icon">&#x1F4F1;</div><h3>Redes Sociales</h3><p>Gesti&#243;n completa de tus redes sociales con contenido de calidad que construye comunidad y genera ventas.</p></div>
-    <div class="service-card"><div class="service-icon">&#x1F4CA;</div><h3>Analytics &amp; Reporting</h3><p>Dashboards en tiempo real y reportes mensuales detallados para que siempre sepas el impacto de cada acci&#243;n.</p></div>
-  </div>
-</section>
-
-<section id="process">
-  <div class="section-tag">Proceso</div>
-  <h2 class="section-title">C&#243;mo Trabajamos</h2>
-  <p class="section-sub" style="margin:0 auto 0;">Un proceso probado en 4 pasos para llevar tu negocio al siguiente nivel.</p>
-  <div class="steps">
-    <div class="step"><div class="step-num">1</div><h3>Auditor&#237;a Gratuita</h3><p>Analizamos tu negocio, competencia y oportunidades de crecimiento sin costo alguno.</p></div>
-    <div class="step"><div class="step-num">2</div><h3>Estrategia Personalizada</h3><p>Creamos un plan a medida con objetivos claros, KPIs y cronograma de ejecuci&#243;n.</p></div>
-    <div class="step"><div class="step-num">3</div><h3>Ejecuci&#243;n &amp; Optimizaci&#243;n</h3><p>Implementamos, medimos y optimizamos continuamente para maximizar resultados.</p></div>
-    <div class="step"><div class="step-num">4</div><h3>Escala y Crecimiento</h3><p>Con datos reales escalamos lo que funciona y eliminamos lo que no, acelerando tu crecimiento.</p></div>
-  </div>
-</section>
-
-<section id="results">
-  <div class="results-wrap">
-    <div class="results-text">
-      <div class="section-tag">Resultados</div>
-      <h2 class="section-title">N&#250;meros Que Hablan Por Nosotros</h2>
-      <p class="section-sub">No prometemos, demostramos. Nuestros clientes ven resultados reales en los primeros 30 d&#237;as de campa&#241;a.</p>
-      <a href="#cta" class="btn-primary" style="margin-top:2rem;display:inline-block;">Ver Casos de &#201;xito &rarr;</a>
+    <div class="wrap">
+      <div class="hero-media reveal d2">
+        <span class="hero-media-tag">Equipo Pitch en terreno</span>
+        <image-slot id="hero-team" shape="rounded" radius="22" placeholder="Arrastra aquí una foto del equipo en terreno (panorámica)"></image-slot>
+      </div>
     </div>
-    <div class="results-metrics">
-      <div class="metric-card"><div class="metric-num">+280%</div><div class="metric-label">Aumento en Tr&#225;fico</div></div>
-      <div class="metric-card"><div class="metric-num">4.2x</div><div class="metric-label">Retorno de Inversi&#243;n</div></div>
-      <div class="metric-card"><div class="metric-num">-42%</div><div class="metric-label">Costo por Adquisici&#243;n</div></div>
-      <div class="metric-card"><div class="metric-num">+175%</div><div class="metric-label">Conversiones</div></div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat reveal"><div class="num">2023</div><div class="lbl">Año de fundación</div></div>
+        <div class="stat reveal d1"><div class="num">+<span class="cnt" data-to="30">0</span></div><div class="lbl">Personas en terreno</div></div>
+        <div class="stat reveal d2"><div class="num">+<span class="cnt" data-to="20">0</span></div><div class="lbl">Comercios aliados</div></div>
+        <div class="stat reveal d3"><div class="num">+<span class="cnt" data-to="5">0</span></div><div class="lbl">Rubros conectados</div></div>
+      </div>
     </div>
   </div>
-</section>
 
-<section id="testimonials">
-  <div class="section-tag">Testimonios</div>
-  <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
-  <div class="testi-grid">
-    <div class="testi-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">"En solo 3 meses triplicamos nuestras ventas online. El equipo de PitchMkt es incre&#237;ble, saben exactamente qu&#233; hacer."</p><div class="testi-author"><div class="avatar">MA</div><div><div class="author-name">Mar&#237;a Alejandra L&#243;pez</div><div class="author-role">CEO, TiendaFashion.mx</div></div></div></div>
-    <div class="testi-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">"Redujeron nuestro costo por lead un 60% mientras aumentaban la calidad. El ROI habla por s&#237; solo: 5x en 6 meses."</p><div class="testi-author"><div class="avatar">CR</div><div><div class="author-name">Carlos Rodr&#237;guez</div><div class="author-role">Director, InmobiliariaPlus</div></div></div></div>
-    <div class="testi-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">"Profesionales, transparentes y con resultados reales. Pasamos de 0 a 50,000 seguidores org&#225;nicos en 4 meses."</p><div class="testi-author"><div class="avatar">SG</div><div><div class="author-name">Sof&#237;a Garc&#237;a</div><div class="author-role">Fundadora, NutriCoach App</div></div></div></div>
-  </div>
-</section>
+  <section class="block" id="que-hacemos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Qué hacemos</div>
+        <h2>Alianzas de alto valor, marketing directo de verdad.</h2>
+        <p>Somos expertos en marketing directo y en crear alianzas estratégicas. Negociamos beneficios exclusivos con proveedores líderes —centros médicos, clínicas dentales, veterinarias, estética y servicios automotrices— y los integramos en una cuponera premium que nuestro equipo distribuye activamente en terreno.</p>
+      </div>
+      <div class="what-grid">
+        <div class="what-media reveal">
+          <image-slot id="what-photo" shape="rounded" radius="20" placeholder="Foto de un asesor / cuponera / equipo en terreno"></image-slot>
+        </div>
+        <div class="cards">
+          <div class="card reveal d1"><div class="cnum">01 / ALIANZAS</div><h3>Conectamos a los mejores</h3><p>Negociamos beneficios exclusivos con proveedores líderes de cada rubro, creando alianzas de alto valor para todos.</p></div>
+          <div class="card reveal d2"><div class="cnum">02 / CUPONERA PREMIUM</div><h3>Beneficios que valen la pena</h3><p>Integramos esos beneficios en una cuponera premium: una invitación concreta para que las personas conozcan cada servicio.</p></div>
+          <div class="card reveal d3"><div class="cnum">03 / DISTRIBUCIÓN EN TERRENO</div><h3>Cara a cara, en todo el sur</h3><p>Nuestro equipo de ventas la distribuye activamente, generando nuevos clientes para los proveedores y conexiones reales.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="pricing">
-  <div class="section-tag">Precios</div>
-  <h2 class="section-title">Planes Para Cada Etapa</h2>
-  <p class="section-sub" style="margin:0 auto;">Sin contratos largos, sin sorpresas. Cancela cuando quieras.</p>
-  <div class="pricing-grid">
-    <div class="price-card"><div class="price-plan">Starter</div><div class="price-amount"><span>$</span>799</div><div class="price-period">/ mes</div><ul class="price-features"><li>1 Canal publicitario</li><li>Gesti&#243;n de 2 redes sociales</li><li>Reporte mensual</li><li>Soporte por email</li><li>Auditor&#237;a inicial gratuita</li></ul><a href="#cta" class="btn-outline" style="display:block;text-align:center;">Empezar</a></div>
-    <div class="price-card popular"><div class="popular-badge">M&#225;s Popular</div><div class="price-plan">Growth</div><div class="price-amount"><span>$</span>1,899</div><div class="price-period">/ mes</div><ul class="price-features"><li>3 Canales publicitarios</li><li>Gesti&#243;n de 4 redes sociales</li><li>SEO b&#225;sico incluido</li><li>Reportes quincenales</li><li>Email marketing (hasta 5k)</li><li>Soporte prioritario</li></ul><a href="#cta" class="btn-primary" style="display:block;text-align:center;">Empezar</a></div>
-    <div class="price-card"><div class="price-plan">Scale</div><div class="price-amount"><span>$</span>3,999</div><div class="price-period">/ mes</div><ul class="price-features"><li>Canales ilimitados</li><li>Redes sociales completas</li><li>SEO avanzado + contenido</li><li>Reportes semanales</li><li>Email marketing ilimitado</li><li>Account Manager dedicado</li><li>Branding &amp; dise&#241;o incluido</li></ul><a href="#cta" class="btn-outline" style="display:block;text-align:center;">Empezar</a></div>
-  </div>
-</section>
+  <section class="block proceso" id="proceso">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">De qué forma trabajamos</div>
+        <h2>De la alianza a la calle, en cuatro pasos.</h2>
+        <p>Un método simple, humano y efectivo. Así conectamos a los proveedores con miles de personas en toda la macrozona sur.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="snum">01</div><div class="sbar"></div><h3>Sumamos aliados</h3><p>Integramos a proveedores líderes de salud, estética, veterinaria y automotriz.</p></div>
+        <div class="step reveal d1"><div class="snum">02</div><div class="sbar"></div><h3>Negociamos beneficios</h3><p>Acordamos descuentos y beneficios exclusivos de alto valor para las personas.</p></div>
+        <div class="step reveal d2"><div class="snum">03</div><div class="sbar"></div><h3>Armamos la cuponera</h3><p>Reunimos todos los beneficios en una cuponera premium, lista para la calle.</p></div>
+        <div class="step reveal d3"><div class="snum">04</div><div class="sbar"></div><h3>Distribuimos en terreno</h3><p>Nuestro equipo la lleva directo a la gente, generando nuevos clientes.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="cta">
-  <h2>&#191;Listo Para Hacer Crecer Tu Negocio?</h2>
-  <p>Agenda una auditor&#237;a gratuita y descubre c&#243;mo podemos ayudarte a conseguir m&#225;s clientes.</p>
-  <a href="mailto:hola@pitchmkt.com" class="btn-primary" style="font-size:1.1rem;padding:1.1rem 3rem;">Agenda Tu Consulta Gratuita &rarr;</a>
-  <p style="margin-top:1.5rem;font-size:.85rem;color:var(--muted);">Sin compromisos. Sin tarjeta de cr&#233;dito. Solo resultados.</p>
-</section>
+  <section class="brand-band">
+    <div class="wrap">
+      <div class="eyebrow reveal">Una marca, todo el sur</div>
+      <div class="bb-logo-wrap"><img src="assets/logo.png" class="bb-logo" alt="Pitch Marketing" /></div>
+      <p class="bb-tag reveal">Marketing directo que <span>conecta</span> proveedores líderes con miles de personas.</p>
+      <div class="soundwave lg reveal" data-bars="34" style="margin:34px auto 0;" aria-hidden="true"></div>
+    </div>
+  </section>
 
-<footer>
-  <div class="footer-logo">PitchMkt</div>
-  <div class="footer-links">
-    <a href="#services">Servicios</a>
-    <a href="#pricing">Precios</a>
-    <a href="mailto:hola@pitchmkt.com">Contacto</a>
-    <a href="#">Privacidad</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 PitchMkt. Todos los derechos reservados.</div>
-</footer>
+  <section class="block recruit" id="equipo">
+    <img src="assets/logo.png" class="recruit-mono" data-parallax="-0.18" alt="" aria-hidden="true" />
+    <div class="wrap">
+      <div class="recruit-grid">
+        <div>
+          <div class="eyebrow reveal">¿Quieres trabajar con nosotros?</div>
+          <h2 class="reveal d1">Un equipo que la pasa bien mientras crece.</h2>
+          <p class="lead reveal d2">Somos más de 30 personas que disfrutan lo que hacen: nos reímos, lo pasamos bien y creamos conexiones reales distribuyendo nuestra cuponera en terreno. Si te gusta la gente, la calle y los desafíos, este es tu lugar.</p>
+          <div class="recruit-bullets reveal d2">
+            <div class="rb"><div class="dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2L5 8.5L9.5 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="txt"><strong>Equipo joven y dinámico</strong> — buen ambiente, energía y compañerismo todos los días.</div></div>
+            <div class="rb"><div class="dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2L5 8.5L9.5 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="txt"><strong>Trabajo en terreno por todo el sur</strong> — conoce gente nueva en cada región.</div></div>
+            <div class="rb"><div class="dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2L5 8.5L9.5 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="txt"><strong>Crece con nosotros</strong> — una empresa en plena expansión hacia nuevos rubros y ciudades.</div></div>
+          </div>
+          <div class="recruit-actions reveal d3">
+            <a href="#postular" class="btn btn-light">Postula ahora <span class="btn-arrow">→</span></a>
+            <span class="ig-handle">@pitch_marketing_chile</span>
+          </div>
+          <div class="soundwave lg on-dark recruit-wave reveal d3" data-bars="42" aria-hidden="true"></div>
+        </div>
+        <div class="recruit-brand reveal d1">
+          <div class="rb-glow" aria-hidden="true"></div>
+          <img src="assets/logo.png" class="rb-logo" alt="Pitch Marketing" />
+          <div class="soundwave on-dark rb-wave" data-bars="22" aria-hidden="true"></div>
+          <div class="rb-cap">Sé parte del equipo Pitch</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="block testi" id="clientes">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Nuestros aliados</div>
+        <h2>Comercios que confían en Pitch.</h2>
+        <p>Trabajamos con proveedores líderes de distintos rubros en todo el sur de Chile, integrando sus beneficios en nuestra cuponera premium.</p>
+      </div>
+      <div class="clientes-grid">
+        <div class="cli-card reveal"><image-slot id="cli-1" class="cli-logo" shape="rounded" radius="14" placeholder="Logo / foto"></image-slot><div class="cli-meta"><div><div class="cli-name">Clínica Dental Ruz</div><div class="cli-loc">Temuco</div></div><span class="cli-tag">Dental</span></div></div>
+        <div class="cli-card reveal d1"><image-slot id="cli-2" class="cli-logo" shape="rounded" radius="14" placeholder="Logo / foto"></image-slot><div class="cli-meta"><div><div class="cli-name">Clínica Starrdent</div><div class="cli-loc">Osorno</div></div><span class="cli-tag">Dental</span></div></div>
+        <div class="cli-card reveal d2"><image-slot id="cli-3" class="cli-logo" shape="rounded" radius="14" placeholder="Logo / foto"></image-slot><div class="cli-meta"><div><div class="cli-name">Centro Médico Lacustre</div><div class="cli-loc">Villarrica</div></div><span class="cli-tag">Salud</span></div></div>
+        <div class="cli-card reveal"><image-slot id="cli-4" class="cli-logo" shape="rounded" radius="14" placeholder="Logo / foto"></image-slot><div class="cli-meta"><div><div class="cli-name">Clinica Dental Victoria</div><div class="cli-loc">Temuco</div></div><span class="cli-tag">Estética</span></div></div>
+        <div class="cli-card reveal d1"><image-slot id="cli-5" class="cli-logo" shape="rounded" radius="14" placeholder="Logo / foto"></image-slot><div class="cli-meta"><div><div class="cli-name">Clinica Galgani Y Borquez</div><div class="cli-loc">Temuco</div></div><span class="cli-tag">Automotriz</span></div></div>
+        <div class="cli-card reveal d2"><image-slot id="cli-6" class="cli-logo" shape="rounded" radius="14" placeholder="Logo / foto"></image-slot><div class="cli-meta"><div><div class="cli-name">Clinica Msalud</div><div class="cli-loc">Temuco</div></div><span class="cli-tag">Veterinaria</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block postular" id="postular">
+    <img src="assets/logo.png" class="postular-mono" data-parallax="0.18" alt="" aria-hidden="true" />
+    <div class="wrap">
+      <div class="postular-grid">
+        <div>
+          <div class="eyebrow reveal">Postula al equipo</div>
+          <h2 class="reveal d1">Da el primer paso. Te esperamos.</h2>
+          <p class="lead reveal d2">Déjanos tus datos y conversemos. Buscamos personas con energía y ganas de trabajar en terreno. No necesitas experiencia previa, solo actitud.</p>
+          <div class="postular-contact reveal d2">
+            <div class="pc-item"><div class="pc-ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg></div><div><a href="https://instagram.com/pitch_marketing_chile" target="_blank" rel="noopener">Instagram <b>@pitch_marketing_chile</b></a></div></div>
+            <div class="pc-item"><div class="pc-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5h14v14H5z" stroke="#fff" stroke-width="1.7"/><path d="M5 7l7 5 7-5" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><a href="mailto:contactopitchmarketing@gmail.com"><b>contactopitchmarketing@gmail.com</b></a></div></div>
+            <div class="pc-item"><div class="pc-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 15l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 6 2 2 0 0 1 6 3Z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><a href="tel:+56931977929">Teléfono <b>+569 3197 7929</b></a></div></div>
+            <div class="pc-item"><div class="pc-ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#fff" stroke-width="1.7"/></svg></div><div><b>Manuel Bulnes 541, Of. 501</b> — Temuco</div></div>
+          </div>
+        </div>
+        <div class="form-card reveal d1">
+          <div id="formFields">
+            <h3>Cuéntanos de ti</h3>
+            <p class="fc-sub">Te contactamos por WhatsApp para coordinar.</p>
+            <form id="applyForm">
+              <div class="form-row"><div class="field"><label for="f-nombre">Nombre completo</label><input id="f-nombre" name="nombre" type="text" placeholder="Tu nombre" required /></div></div>
+              <div class="form-row two"><div class="field"><label for="f-tel">Teléfono</label><input id="f-tel" name="telefono" type="tel" placeholder="+56 9 ..." required /></div><div class="field"><label for="f-region">Región</label><select id="f-region" name="region" required><option value="" disabled selected>Selecciona</option><option>Región de la Araucanía</option><option>Región de Los Ríos</option><option>Región de Los Lagos</option><option>Otra</option></select></div></div>
+              <div class="form-row"><div class="field"><label for="f-msg">Mensaje (opcional)</label><textarea id="f-msg" name="mensaje" placeholder="Cuéntanos por qué quieres unirte"></textarea></div></div>
+              <button type="submit" class="btn btn-primary">Enviar por WhatsApp <span class="btn-arrow">→</span></button>
+              <p class="form-note">Al enviar, se abrirá WhatsApp con tu mensaje listo.</p>
+            </form>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="fs-ic"><svg viewBox="0 0 24 24" fill="none" width="26" height="26"><path d="M5 12.5 10 17.5 19.5 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>¡Listo!</h4>
+            <p>Abrimos WhatsApp con tu postulación. Si no se abrió, escríbenos por Instagram a @pitch_marketing_chile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal"><div class="eyebrow">Preguntas frecuentes</div><h2>Resolvemos tus dudas.</h2></div>
+      <div class="faq-list reveal">
+        <div class="faq-item"><button class="faq-q">¿Qué es la cuponera premium?<span class="faq-ic"></span></button><div class="faq-a"><div class="faq-a-inner">Es una cuponera con beneficios y descuentos exclusivos que negociamos con proveedores líderes de distintos rubros. Nuestro equipo la distribuye en terreno para que las personas conozcan y aprovechen cada servicio.</div></div></div>
+        <div class="faq-item"><button class="faq-q">¿Con qué tipo de comercios trabajan?<span class="faq-ic"></span></button><div class="faq-a"><div class="faq-a-inner">Con proveedores de sectores esenciales: centros médicos, clínicas dentales, centros veterinarios, estética, y servitecas o servicios automotrices. Y seguimos sumando nuevos rubros.</div></div></div>
+        <div class="faq-item"><button class="faq-q">¿En qué ciudades tienen presencia?<span class="faq-ic"></span></button><div class="faq-a"><div class="faq-a-inner">Nuestra base está en Temuco y trabajamos con aliados en Osorno, Villarrica y otras ciudades del sur. Estamos en constante expansión por la macrozona sur de Chile.</div></div></div>
+        <div class="faq-item"><button class="faq-q">¿Necesito experiencia para postular?<span class="faq-ic"></span></button><div class="faq-a"><div class="faq-a-inner">No es indispensable. Valoramos la actitud, la energía y las ganas de trabajar en terreno. Te capacitamos y acompañamos para que des lo mejor desde el primer día.</div></div></div>
+        <div class="faq-item"><button class="faq-q">¿Cómo postulo al equipo?<span class="faq-ic"></span></button><div class="faq-a"><div class="faq-a-inner">Completa el formulario de esta página o escríbenos directo por Instagram a @pitch_marketing_chile. Te contactamos para coordinar una conversación.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block proceso" id="ubicacion">
+    <div class="wrap">
+      <div class="sec-head reveal"><div class="eyebrow">Dónde nos ubicamos</div><h2>Con raíces en Temuco, presentes en todo el sur.</h2></div>
+      <div class="loc-grid">
+        <div class="loc-info">
+          <div class="eyebrow reveal" style="color:var(--gray);">Oficina principal</div>
+          <div class="addr reveal d1">Manuel Bulnes 541, <span>Of. 501</span></div>
+          <p class="loc-detail reveal d1">Temuco, Chile. Desde aquí coordinamos a todo el equipo de ventas desplegado en la macrozona sur.</p>
+          <div class="regions reveal d2"><span class="region-chip">Temuco</span><span class="region-chip">Osorno</span><span class="region-chip">Villarrica</span><span class="region-chip">+ Sur de Chile</span></div>
+          <div class="trayectoria reveal d2">
+            <div class="tr-item"><div class="tn">+569 3197 7929</div><div class="tl">Teléfono / WhatsApp</div></div>
+            <div class="tr-item"><div class="tn" style="font-size:1.2rem;">contactopitchmarketing@gmail.com</div><div class="tl">Correo de contacto</div></div>
+          </div>
+        </div>
+        <div class="loc-media reveal d1"><image-slot id="loc-photo" shape="rounded" radius="20" placeholder="Foto de la oficina / fachada / mapa de la zona"></image-slot></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finalcta">
+    <div class="wrap">
+      <div class="soundwave lg reveal" data-bars="30" aria-hidden="true"></div>
+      <div class="eyebrow reveal">Da el primer paso</div>
+      <h2 class="reveal d1">¿Listo para ser parte de <span class="accent">Pitch Marketing?</span></h2>
+      <p class="reveal d2">Postula al equipo o escríbenos por Instagram. El sur te está esperando.</p>
+      <div class="hero-actions reveal d3">
+        <a href="#postular" class="btn btn-primary">Postula ahora <span class="btn-arrow">→</span></a>
+        <a href="https://instagram.com/pitch_marketing_chile" target="_blank" rel="noopener" class="btn btn-ghost">Síguenos en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="foot-logo"><img src="assets/logo.png" alt="Pitch Marketing" /></div>
+          <p class="foot-tagline">Marketing directo y alianzas estratégicas en la macrozona sur de Chile.</p>
+        </div>
+        <div class="foot-nav">
+          <div class="foot-col"><h4>Empresa</h4><a href="#que-hacemos">Qué hacemos</a><a href="#proceso">Cómo trabajamos</a><a href="#clientes">Aliados</a><a href="#equipo">Únete al equipo</a></div>
+          <div class="foot-col"><h4>Contacto</h4><a href="https://instagram.com/pitch_marketing_chile" target="_blank" rel="noopener">@pitch_marketing_chile</a><a href="mailto:contactopitchmarketing@gmail.com">contactopitchmarketing@gmail.com</a><a href="tel:+56931977929">+569 3197 7929</a><p>Manuel Bulnes 541, Of. 501, Temuco</p></div>
+        </div>
+      </div>
+      <div class="foot-bottom"><span>© 2026 Pitch Marketing — Todos los derechos reservados.</span><span>Temuco · Osorno · Villarrica · Sur de Chile</span></div>
+    </div>
+  </footer>
+
+  <a class="float-ig" href="https://instagram.com/pitch_marketing_chile" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/></svg>
+    <span>Escríbenos</span>
+  </a>
+
+  <div id="tweak-root"></div>
+  <script src="app.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = {"accent":["#5B21B6","#7C5CE0","#3C1487"],"titular":"Conectamos personas con los ","titularDestacado":"mejores servicios del sur.","soundwaves":true,"whatsapp":"56931977929"};
+    function applyTweaks(t) {
+      const root = document.documentElement;
+      if (Array.isArray(t.accent)) { root.style.setProperty('--purple', t.accent[0]); root.style.setProperty('--purple-2', t.accent[1]); root.style.setProperty('--purple-ink', t.accent[2]); }
+      const main = document.querySelector('.h1-main'); if (main) main.textContent = t.titular;
+      const acc = document.querySelector('.h1-accent'); if (acc) acc.textContent = t.titularDestacado;
+      document.body.classList.toggle('waves-off', !t.soundwaves);
+      window.__WA = (t.whatsapp || '').replace(/\D/g, '');
+    }
+    function TweakApp() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      React.useEffect(() => { applyTweaks(t); }, [t]);
+      return (<TweaksPanel title="Tweaks"><TweakSection label="Marca" /><TweakColor label="Acento" value={t.accent} options={[["#6D28D9","#8B5CF6","#4C1D95"],["#7C3AED","#A78BFA","#5B21B6"],["#5B21B6","#7C5CE0","#3C1487"],["#7E22CE","#A855F7","#581C87"]]} onChange={(v) => setTweak('accent', v)} /><TweakSection label="Movimiento" /><TweakToggle label="Soundwaves" value={t.soundwaves} onChange={(v) => setTweak('soundwaves', v)} /><TweakSection label="Titular" /><TweakText label="Línea" value={t.titular} onChange={(v) => setTweak('titular', v)} /><TweakText label="Destacado" value={t.titularDestacado} onChange={(v) => setTweak('titularDestacado', v)} /><TweakSection label="Contacto" /><TweakText label="WhatsApp" value={t.whatsapp} placeholder="569..." onChange={(v) => setTweak('whatsapp', v)} /></TweaksPanel>);
+    }
+    applyTweaks(TWEAK_DEFAULTS);
+    ReactDOM.createRoot(document.getElementById('tweak-root')).render(<TweakApp />);
+  </script>
 </body>
 </html>
