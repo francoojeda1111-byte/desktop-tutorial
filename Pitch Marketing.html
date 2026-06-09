@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pitch Marketing — Transforma Tu Negocio</title>
+  <meta name="description" content="Agencia de marketing digital que impulsa tu marca con estrategias creativas y resultados medibles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #6C3BFF;
+      --primary-light: #8B5FFF;
+      --accent: #FF3B7A;
+      --dark: #0D0D1A;
+      --dark2: #151528;
+      --card-bg: #1A1A35;
+      --text: #E8E8F0;
+      --muted: #9090B0;
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, #6C3BFF 0%, #FF3B7A 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(13,13,26,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(108,59,255,.2);
+    }
+    .logo {
+      font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--gradient); color: var(--white); border: none; cursor: pointer;
+      padding: .65rem 1.6rem; border-radius: 50px; font-weight: 700; font-size: .9rem;
+      transition: opacity .2s, transform .2s;
+    }
+    .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 8rem 5% 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(100px); opacity: .35; pointer-events: none;
+    }
+    .blob1 { width: 600px; height: 600px; background: var(--primary); top: -200px; left: -150px; }
+    .blob2 { width: 500px; height: 500px; background: var(--accent); bottom: -150px; right: -100px; }
+
+    .hero-badge {
+      display: inline-block; background: rgba(108,59,255,.2); border: 1px solid rgba(108,59,255,.5);
+      color: var(--primary-light); padding: .4rem 1.1rem; border-radius: 50px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem); color: var(--muted); max-width: 640px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gradient); color: var(--white); border: none; cursor: pointer;
+      padding: 1rem 2.4rem; border-radius: 50px; font-weight: 700; font-size: 1rem;
+      transition: opacity .2s, transform .2s; text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { opacity: .85; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--text); border: 1.5px solid rgba(255,255,255,.25); cursor: pointer;
+      padding: 1rem 2.4rem; border-radius: 50px; font-weight: 600; font-size: 1rem;
+      transition: border-color .2s, transform .2s; text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 4rem;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2.2rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-label { font-size: .85rem; color: var(--muted); margin-top: .25rem; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 5%; }
+    .section-tag {
+      display: inline-block; background: rgba(108,59,255,.15); border: 1px solid rgba(108,59,255,.4);
+      color: var(--primary-light); padding: .35rem .9rem; border-radius: 50px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -1px;
+      margin-bottom: 1rem; line-height: 1.1;
+    }
+    .section-sub { color: var(--muted); max-width: 560px; line-height: 1.7; font-size: 1.05rem; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--dark2); }
+    .services-header { text-align: center; margin-bottom: 4rem; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--card-bg); border: 1px solid rgba(108,59,255,.15); border-radius: 20px;
+      padding: 2.2rem; transition: transform .25s, border-color .25s;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(108,59,255,.5); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--gradient); display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.3rem;
+    }
+    .service-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .6rem; }
+    .service-card p { color: var(--muted); line-height: 1.65; font-size: .95rem; }
+
+    /* ── HOW IT WORKS ── */
+    #process { text-align: center; }
+    .steps { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-top: 3.5rem; max-width: 1100px; margin-inline: auto; }
+    .step {
+      flex: 1; min-width: 220px; max-width: 260px;
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,.06); border-radius: 20px;
+      padding: 2.2rem 1.8rem; position: relative;
+    }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; margin: 0 auto 1.2rem;
+    }
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .step p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
+
+    /* ── RESULTS ── */
+    #results { background: var(--dark2); }
+    .results-wrap { display: flex; gap: 5rem; align-items: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    .results-text { flex: 1; min-width: 280px; }
+    .results-metrics { flex: 1; min-width: 280px; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .metric-card {
+      background: var(--card-bg); border: 1px solid rgba(108,59,255,.2); border-radius: 18px;
+      padding: 1.8rem; text-align: center;
+    }
+    .metric-num { font-size: 2.5rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .metric-label { font-size: .85rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { text-align: center; }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0; }
+    .testi-card {
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,.06); border-radius: 20px;
+      padding: 2rem; text-align: left;
+    }
+    .stars { color: #FFD700; font-size: 1.1rem; margin-bottom: 1rem; }
+    .testi-text { color: var(--text); line-height: 1.7; font-size: .95rem; margin-bottom: 1.3rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: .9rem; }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--gradient);
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;
+    }
+    .author-name { font-weight: 700; font-size: .95rem; }
+    .author-role { color: var(--muted); font-size: .8rem; }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--dark2); text-align: center; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 3.5rem auto 0; }
+    .price-card {
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,.07); border-radius: 24px;
+      padding: 2.5rem 2rem; position: relative; transition: transform .25s;
+    }
+    .price-card:hover { transform: translateY(-6px); }
+    .price-card.popular { border-color: var(--primary); }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--gradient); color: var(--white); padding: .3rem 1.2rem;
+      border-radius: 50px; font-size: .78rem; font-weight: 700;
+    }
+    .price-plan { font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .8rem; }
+    .price-amount { font-size: 3rem; font-weight: 900; line-height: 1; }
+    .price-amount span { font-size: 1.2rem; color: var(--muted); }
+    .price-period { color: var(--muted); font-size: .85rem; margin-bottom: 1.8rem; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .price-features li { padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .9rem; color: var(--muted); display: flex; gap: .6rem; align-items: center; }
+    .price-features li::before { content: "✓"; color: var(--primary-light); font-weight: 700; }
+
+    /* ── CTA SECTION ── */
+    #cta {
+      text-align: center; padding: 7rem 5%;
+      background: radial-gradient(ellipse at center, rgba(108,59,255,.25) 0%, transparent 70%);
+    }
+    #cta h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 1.2rem; }
+    #cta p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark2); border-top: 1px solid rgba(255,255,255,.06);
+      padding: 3rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-size: 1.3rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--muted); font-size: .82rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .results-wrap { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PitchMkt</div>
+  <ul class="nav-links">
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#process">Proceso</a></li>
+    <li><a href="#results">Resultados</a></li>
+    <li><a href="#pricing">Precios</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Empezar Ahora</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-badge">🚀 Agencia de Marketing Digital #1</div>
+    <h1>Transforma Tu Marca en<br /><span>Una Máquina de Ventas</span></h1>
+    <p class="hero-sub">Estrategias de marketing digital que generan resultados reales. Más clientes, más ingresos, más crecimiento para tu negocio.</p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-primary">Quiero Más Clientes →</a>
+      <a href="#process" class="btn-outline">Ver Cómo Funciona</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">+350%</div><div class="stat-label">ROI Promedio</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Clientes Satisfechos</div></div>
+      <div class="stat"><div class="stat-num">$12M+</div><div class="stat-label">Ingresos Generados</div></div>
+      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Tasa de Retención</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-tag">Servicios</div>
+    <h2 class="section-title">Todo Lo Que Tu Negocio Necesita</h2>
+    <p class="section-sub" style="margin:0 auto;">Soluciones integrales de marketing digital diseñadas para escalar tu negocio rápidamente.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Publicidad de Pago (PPC)</h3>
+      <p>Campañas en Google, Meta, TikTok e Instagram optimizadas para máximo retorno de inversión con presupuestos eficientes.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>SEO & Posicionamiento</h3>
+      <p>Estrategias de SEO técnico y de contenido para que tu negocio aparezca primero cuando tus clientes te buscan.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Branding & Diseño</h3>
+      <p>Identidad de marca que conecta emocionalmente con tu audiencia y diferencia tu negocio de la competencia.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✉️</div>
+      <h3>Email Marketing</h3>
+      <p>Secuencias automáticas de email que nutren leads y convierten prospectos en clientes de forma consistente.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Redes Sociales</h3>
+      <p>Gestión completa de tus redes sociales con contenido de calidad que construye comunidad y genera ventas.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Analytics & Reporting</h3>
+      <p>Dashboards en tiempo real y reportes mensuales detallados para que siempre sepas el impacto de cada acción.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag">Proceso</div>
+  <h2 class="section-title">Cómo Trabajamos</h2>
+  <p class="section-sub" style="margin:0 auto 0;">Un proceso probado en 4 pasos para llevar tu negocio al siguiente nivel.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Auditoría Gratuita</h3>
+      <p>Analizamos tu negocio, competencia y oportunidades de crecimiento sin costo alguno.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Estrategia Personalizada</h3>
+      <p>Creamos un plan a medida con objetivos claros, KPIs y cronograma de ejecución.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Ejecución & Optimización</h3>
+      <p>Implementamos, medimos y optimizamos continuamente para maximizar resultados.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Escala y Crecimiento</h3>
+      <p>Con datos reales escalamos lo que funciona y eliminamos lo que no, acelerando tu crecimiento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="results-wrap">
+    <div class="results-text">
+      <div class="section-tag">Resultados</div>
+      <h2 class="section-title">Números Que Hablan Por Nosotros</h2>
+      <p class="section-sub">No prometemos, demostramos. Nuestros clientes ven resultados reales en los primeros 30 días de campaña.</p>
+      <a href="#cta" class="btn-primary" style="margin-top:2rem;display:inline-block;">Ver Casos de Éxito →</a>
+    </div>
+    <div class="results-metrics">
+      <div class="metric-card"><div class="metric-num">+280%</div><div class="metric-label">Aumento en Tráfico</div></div>
+      <div class="metric-card"><div class="metric-num">4.2x</div><div class="metric-label">Retorno de Inversión</div></div>
+      <div class="metric-card"><div class="metric-num">-42%</div><div class="metric-label">Costo por Adquisición</div></div>
+      <div class="metric-card"><div class="metric-num">+175%</div><div class="metric-label">Conversiones</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag">Testimonios</div>
+  <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"En solo 3 meses triplicamos nuestras ventas online. El equipo de PitchMkt es increíble, saben exactamente qué hacer."</p>
+      <div class="testi-author">
+        <div class="avatar">MA</div>
+        <div><div class="author-name">María Alejandra López</div><div class="author-role">CEO, TiendaFashion.mx</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Redujeron nuestro costo por lead un 60% mientras aumentaban la calidad. El ROI habla por sí solo: 5x en 6 meses."</p>
+      <div class="testi-author">
+        <div class="avatar">CR</div>
+        <div><div class="author-name">Carlos Rodríguez</div><div class="author-role">Director, InmobiliariaPlus</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Profesionales, transparentes y con resultados reales. Pasamos de 0 a 50,000 seguidores orgánicos en 4 meses."</p>
+      <div class="testi-author">
+        <div class="avatar">SG</div>
+        <div><div class="author-name">Sofía García</div><div class="author-role">Fundadora, NutriCoach App</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag">Precios</div>
+  <h2 class="section-title">Planes Para Cada Etapa</h2>
+  <p class="section-sub" style="margin:0 auto;">Sin contratos largos, sin sorpresas. Cancela cuando quieras.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-plan">Starter</div>
+      <div class="price-amount"><span>$</span>799</div>
+      <div class="price-period">/ mes</div>
+      <ul class="price-features">
+        <li>1 Canal publicitario</li>
+        <li>Gestión de 2 redes sociales</li>
+        <li>Reporte mensual</li>
+        <li>Soporte por email</li>
+        <li>Auditoría inicial gratuita</li>
+      </ul>
+      <a href="#cta" class="btn-outline" style="display:block;text-align:center;">Empezar</a>
+    </div>
+    <div class="price-card popular">
+      <div class="popular-badge">Más Popular</div>
+      <div class="price-plan">Growth</div>
+      <div class="price-amount"><span>$</span>1,899</div>
+      <div class="price-period">/ mes</div>
+      <ul class="price-features">
+        <li>3 Canales publicitarios</li>
+        <li>Gestión de 4 redes sociales</li>
+        <li>SEO básico incluido</li>
+        <li>Reportes quincenales</li>
+        <li>Email marketing (hasta 5k)</li>
+        <li>Soporte prioritario</li>
+      </ul>
+      <a href="#cta" class="btn-primary" style="display:block;text-align:center;">Empezar</a>
+    </div>
+    <div class="price-card">
+      <div class="price-plan">Scale</div>
+      <div class="price-amount"><span>$</span>3,999</div>
+      <div class="price-period">/ mes</div>
+      <ul class="price-features">
+        <li>Canales ilimitados</li>
+        <li>Redes sociales completas</li>
+        <li>SEO avanzado + contenido</li>
+        <li>Reportes semanales</li>
+        <li>Email marketing ilimitado</li>
+        <li>Account Manager dedicado</li>
+        <li>Branding & diseño incluido</li>
+      </ul>
+      <a href="#cta" class="btn-outline" style="display:block;text-align:center;">Empezar</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2>¿Listo Para Hacer Crecer Tu Negocio?</h2>
+  <p>Agenda una auditoría gratuita y descubre cómo podemos ayudarte a conseguir más clientes.</p>
+  <a href="mailto:hola@pitchmkt.com" class="btn-primary" style="font-size:1.1rem;padding:1.1rem 3rem;">Agenda Tu Consulta Gratuita →</a>
+  <p style="margin-top:1.5rem;font-size:.85rem;color:var(--muted);">Sin compromisos. Sin tarjeta de crédito. Solo resultados.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">PitchMkt</div>
+  <div class="footer-links">
+    <a href="#services">Servicios</a>
+    <a href="#pricing">Precios</a>
+    <a href="mailto:hola@pitchmkt.com">Contacto</a>
+    <a href="#">Privacidad</a>
+  </div>
+  <div class="footer-copy">© 2026 PitchMkt. Todos los derechos reservados.</div>
+</footer>
+
+</body>
+</html>
